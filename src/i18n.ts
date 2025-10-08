@@ -104,6 +104,30 @@ const resources = {
           pricesTitle: 'Лучшие цены',
           pricesDesc: 'Гарантия лучшей цены и эксклюзивные скидки для участников',
         },
+        whatWeSell: 'Что мы продаем',
+        whatWeSellDesc: 'Премиальные компоненты и готовые системы — отобранные для высокой производительности',
+        categories: {
+          gpu: {
+            eyebrow: 'Графика',
+            title: 'Видеокарты',
+            desc: 'Высокопроизводительные GPU для создателей и геймеров. Рейтрейсинг, DLSS и другое.',
+          },
+          monitor: {
+            eyebrow: 'Дисплеи',
+            title: 'Мониторы',
+            desc: 'Четкое изображение и высокая частота обновления. Ультраширокие, 4K, IPS, OLED.',
+          },
+          aio: {
+            eyebrow: 'Моноблок',
+            title: 'Моноблоки',
+            desc: 'Аккуратные настольные ПК с минимумом проводов. Дизайн и производительность.',
+          },
+          cpu: {
+            eyebrow: 'Процессоры',
+            title: 'Процессоры',
+            desc: 'Многопоточная производительность для работы, игр и контента.',
+          },
+        },
       },
       about: {
         heroTitlePrefix: 'О компании',
@@ -316,6 +340,30 @@ const resources = {
           pricesTitle: 'Best Prices',
           pricesDesc: 'Price match guarantee and exclusive member discounts',
         },
+        whatWeSell: 'What we sell',
+        whatWeSellDesc: 'Premium components and curated systems — handpicked for performance',
+        categories: {
+          gpu: {
+            eyebrow: 'Graphics',
+            title: 'Graphics Cards',
+            desc: 'High‑performance GPUs for creators and gamers. Ray tracing, DLSS, and more.',
+          },
+          monitor: {
+            eyebrow: 'Displays',
+            title: 'Monitors',
+            desc: 'Crisp visuals and fast refresh rates. Ultra‑wide, 4K, IPS, OLED.',
+          },
+          aio: {
+            eyebrow: 'All‑in‑One',
+            title: 'All‑in‑One PCs',
+            desc: 'Streamlined desktops with minimal cables. Sleek design meets capable performance.',
+          },
+          cpu: {
+            eyebrow: 'Processors',
+            title: 'CPUs',
+            desc: 'Multi‑core performance for productivity, gaming, and content creation.',
+          },
+        },
       },
       about: {
         heroTitlePrefix: 'About',
@@ -515,6 +563,30 @@ const resources = {
           supportDesc: '24/7 PC yig‘ish bo‘yicha ekspertlarning texnik yordami',
           pricesTitle: 'Eng yaxshi narxlar',
           pricesDesc: 'Eng yaxshi narx kafolati va ishtirokchilar uchun eksklyuziv chegirmalar',
+        },
+        whatWeSell: 'Nimani sotamiz',
+        whatWeSellDesc: 'Premium komponentlar va tanlab olingan tizimlar — yuqori unumdorlik uchun',
+        categories: {
+          gpu: {
+            eyebrow: 'Grafika',
+            title: 'Video kartalar',
+            desc: 'Yaratuvchilar va geymerlar uchun yuqori unumli GPUlar. Ray tracing, DLSS va boshqalar.',
+          },
+          monitor: {
+            eyebrow: 'Displeylar',
+            title: 'Monitorlar',
+            desc: 'Aniq tasvir va yuqori yangilanish tezligi. Ultra‑keng, 4K, IPS, OLED.',
+          },
+          aio: {
+            eyebrow: 'All‑in‑One',
+            title: 'Monobloklar',
+            desc: 'Minimal simlar bilan ixcham ishchi stollar. Nafis dizayn va kuchli imkoniyatlar.',
+          },
+          cpu: {
+            eyebrow: 'Protsessorlar',
+            title: 'Protsessorlar',
+            desc: 'Ko‘p yadroli unumdorlik — ish, o‘yin va kontent yaratish uchun.',
+          },
         },
       },
       about: {

@@ -22,6 +22,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
 import Magazine3D from "./pages/Magazine3D";
+import ZigZagDemo from "./pages/ZigZagDemo";
 
 const AppLayout = () => (
   <div className="flex flex-col min-h-screen w-full">
@@ -47,6 +48,7 @@ const App = () => (
               {/* App layout wrapper */}
               <Route element={<AppLayout />}> 
                 <Route path="/" element={<Home />} />
+                <Route path="/zigzag" element={<ZigZagDemo />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetail />} />

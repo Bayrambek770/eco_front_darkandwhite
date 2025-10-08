@@ -133,6 +133,21 @@ All colors MUST be HSL.
     will-change: transform;
   }
 
+  /* Floating/tilt micro-interactions for hero tiles */
+  .tile-float {
+    transform: translateZ(0);
+    transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 0.45s ease;
+  }
+  .tile-float:hover {
+    transform: translateY(-10px) rotateZ(-1deg) scale(1.03);
+    box-shadow: 0 20px 50px rgba(10, 20, 40, 0.45);
+  }
+  .tile-tilt {
+    transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.2, 1);
+    will-change: transform;
+  }
+  .tile-tilt:hover { transform: rotate(-1deg) translateY(-6px); }
+
   /* Animated gradient movement (x-axis) */
   @keyframes gradient-x {
     0% { background-position: 0% 50%; }
