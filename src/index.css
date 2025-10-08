@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 224 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 20% 15%;
+
+    --primary: 220 90% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 224 20% 95%;
+    --secondary-foreground: 224 20% 15%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 188 95% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 90% 56%;
+
+    --radius: 0.75rem;
+
+    /* Tech theme gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 90% 56%), hsl(188 95% 50%));
+    --gradient-hero: linear-gradient(to bottom, hsl(224 71% 4%), hsl(220 40% 13%));
+    --gradient-card: linear-gradient(135deg, hsla(220 90% 56% / 0.05), hsla(188 95% 50% / 0.05));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsla(220 90% 56% / 0.3);
+    --shadow-card: 0 4px 20px hsla(224 20% 15% / 0.08);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 40% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 40% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 220 90% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 30% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 30% 12%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 188 95% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 30% 18%;
+    --input: 220 30% 18%;
+    --ring: 220 90% 56%;
+
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 90% 56%), hsl(188 95% 50%));
+    --gradient-hero: linear-gradient(to bottom, hsl(224 71% 4%), hsl(220 40% 8%));
+    --gradient-card: linear-gradient(135deg, hsla(220 90% 56% / 0.1), hsla(188 95% 50% / 0.1));
+    
+    /* Dark shadows */
+    --shadow-glow: 0 0 60px hsla(220 90% 56% / 0.4);
+    --shadow-card: 0 4px 30px hsla(0 0% 0% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+
+  /* Ken Burns slow zoom in/out */
+  @keyframes kenburns-slow {
+    0% { transform: scale(1) translateZ(0); }
+    50% { transform: scale(1.06) translateZ(0); }
+    100% { transform: scale(1) translateZ(0); }
+  }
+  .animate-kenburns-slow {
+    animation: kenburns-slow 5s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* Animated gradient movement (x-axis) */
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 6s ease-in-out infinite alternate;
+  }
+
+  /* Text gradient with animation */
+  .text-gradient-animate {
+    background: linear-gradient(110deg, #4b6cb7, #182848, #4b6cb7);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-x 5.5s ease-in-out infinite alternate;
+  }
+
+  /* Backish gradient background */
+  .bg-backish-gradient {
+    background: linear-gradient(135deg, #0b1220 0%, #0f1b2d 50%, #1a2743 100%);
+  }
+}
+
+/* Components: Custom 3D gradient button for Navbar */
+@layer components {
+  .btn-3d-mag {
+    /* Colors and radius */
+    --c1: #4b6cb7;
+    --c2: #182848;
+    --radius: 14px;
+
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+  overflow: hidden; /* clip pseudo-elements to the rounded box */
+  isolation: isolate; /* contain blending/effects within the button */
+
+    /* Smooth gradient with headroom for animation */
+    background: linear-gradient(110deg, var(--c1) 0%, var(--c2) 50%, var(--c1) 100%);
+    background-size: 200% 200%;
+
+    /* Subtle 3D via drop and inset shadows */
+    box-shadow:
+      0 10px 25px rgba(24, 40, 72, 0.35),
+      0 4px 10px rgba(75, 108, 183, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      inset 0 -2px 8px rgba(0, 0, 0, 0.35);
+
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    transform: translateY(0);
+    transition:
+      background-position 0.6s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      filter 0.2s ease;
+    z-index: 0; /* create a base stacking context */
+  }
+
+  .btn-3d-mag > span {
+    /* Slight top-left bias, while staying visually centered */
+    transform: translate(-4%, -6%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    position: relative;
+    z-index: 1; /* keep label above highlights/sweeps */
+  }
+
+  .btn-3d-mag::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: calc(var(--radius) - 2px);
+    background: radial-gradient(120% 100% at 20% 0%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);
+    mix-blend-mode: screen;
+    transition: transform 0.6s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .btn-3d-mag::after {
+    /* Hover light sweep */
+    content: "";
+    position: absolute;
+    inset: 0; /* stay inside the button bounds */
+    border-radius: inherit;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.8s ease;
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 0; /* below the text label */
+  }
+
+  .btn-3d-mag:hover {
+    background-position: 100% 50%;
+    transform: translateY(-2px);
+    box-shadow:
+      0 14px 30px rgba(24, 40, 72, 0.4),
+      0 8px 16px rgba(75, 108, 183, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      inset 0 -2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .btn-3d-mag:hover::after {
+    transform: translateX(120%);
+  }
+
+  .btn-3d-mag:focus { outline: none; }
+
+  .btn-3d-mag:focus-visible {
+    box-shadow:
+      0 0 0 3px rgba(255, 255, 255, 0.15),
+      0 10px 26px rgba(24, 40, 72, 0.45),
+      0 6px 14px rgba(75, 108, 183, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      inset 0 -2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .btn-3d-mag:active {
+    transform: translateY(0);
+    filter: brightness(0.98);
+    box-shadow:
+      0 6px 14px rgba(24, 40, 72, 0.35),
+      0 4px 10px rgba(75, 108, 183, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -1px 6px rgba(0, 0, 0, 0.4);
+  }
+}
