@@ -37,9 +37,9 @@ const Cart = () => {
           <div className="lg:col-span-2 space-y-4">
             {cart.map((item, index) => (
               <Card key={item.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.05}s` }}>
-                <CardContent className="p-6">
-                  <div className="flex gap-6">
-                    <div className="w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-secondary">
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
+                    <div className="w-full sm:w-32 h-40 sm:h-32 flex-shrink-0 rounded-lg overflow-hidden bg-secondary">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -47,23 +47,25 @@ const Cart = () => {
                       />
                     </div>
 
-                    <div className="flex-1">
-                      <div className="flex justify-between mb-2">
-                        <div>
-                          <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
-                          <p className="text-sm text-muted-foreground">{item.category}</p>
+                    <div className="flex-1 w-full">
+                      <div className="flex items-start justify-between mb-2 gap-4">
+                        <div className="min-w-0">
+                          <h3 className="font-semibold text-lg mb-1 truncate">{item.name}</h3>
+                          <p className="text-sm text-muted-foreground truncate">{item.category}</p>
                         </div>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => removeFromCart(item.id)}
-                          className="text-destructive hover:text-destructive"
-                        >
-                          <Trash2 className="h-5 w-5" />
-                        </Button>
+                        <div className="ml-auto">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => removeFromCart(item.id)}
+                            className="text-destructive hover:text-destructive"
+                          >
+                            <Trash2 className="h-5 w-5" />
+                          </Button>
+                        </div>
                       </div>
 
-                      <div className="flex items-center justify-between mt-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-2 gap-3">
                         <div className="flex items-center gap-3">
                           <Button
                             variant="outline"
@@ -85,7 +87,7 @@ const Cart = () => {
                           </Button>
                         </div>
 
-                        <div className="text-right">
+                        <div className="text-right sm:text-right">
                           <p className="text-2xl font-bold text-gradient">
                             {formatUZS(item.price * item.quantity)}
                           </p>
@@ -103,7 +105,7 @@ const Cart = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-24 animate-fade-in-up">
+            <Card className="animate-fade-in-up lg:sticky lg:top-24">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold mb-6">{t('cartPage.summary')}</h2>
 
