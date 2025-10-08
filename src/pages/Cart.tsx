@@ -49,11 +49,11 @@ const Cart = () => {
 
                     <div className="flex-1 w-full">
                       <div className="flex items-start justify-between mb-2 gap-4">
-                        <div className="min-w-0">
-                          <h3 className="font-semibold text-lg mb-1 truncate">{item.name}</h3>
+                        <div className="min-w-0 pr-2">
+                          <h3 className="font-semibold text-lg mb-1 line-clamp-2 break-words">{item.name}</h3>
                           <p className="text-sm text-muted-foreground truncate">{item.category}</p>
                         </div>
-                        <div className="ml-auto">
+                        <div className="ml-auto shrink-0 self-start z-10">
                           <Button
                             variant="ghost"
                             size="icon"

@@ -107,6 +107,13 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Two-line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   .text-gradient {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
